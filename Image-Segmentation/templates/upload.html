@@ -20,6 +20,11 @@
         <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="300">
     {% endif %}
 
+    {%if segmented %}
+        <h3>Uploaded Image:</h3>
+        <img src="{{ url_for('static', filename='processed/' + filename) }}" width="300">
+    {% endif %}
+
     {% if error %}
         <p style="color:red;">{{ error }}</p>
     {% endif %}
