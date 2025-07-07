@@ -24,6 +24,8 @@ def upload_image():
             file.save(filepath)
         else:
             error = 'File type not allowed. Please upload a .jpg, .jpeg, or .png file.'
+        k = request.form.get('k')
+        print("Obtained value k: ", k)
     return render_template('upload.html', filename=filename, error=error)
 
 @app.route('/uploads/<filename>')
