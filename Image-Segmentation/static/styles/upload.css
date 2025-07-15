@@ -2,6 +2,14 @@
 
 body {
     background-color: rgb(93, 93, 93);
+    margin:0;
+    padding:0;
+}
+
+.image-segmentation-wrapper {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
@@ -16,12 +24,17 @@ body {
     display:flex;
     justify-content: center;
     flex-direction: column;
+    background-color: rgb(83, 83, 83);
+    width:320px;
+    padding:8px;
+    border-radius: 8px;
 }
 
 .slider-wrapper {
     display:flex;
     flex-direction: row;
     justify-content: center;
+    align-items:center;
 }
 
 .upload-file-wrapper {
@@ -44,9 +57,22 @@ body {
 
 .output-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-direction: row;
-    gap:16px;
+    column-gap:5px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.output-header {
+    color:azure;
+    display:flex;
+    justify-content: center;
+}
+
+.output-image {
+    max-width: 100%;
+    height:auto;
 }
 
 .error-text {

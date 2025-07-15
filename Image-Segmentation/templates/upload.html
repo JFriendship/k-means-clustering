@@ -5,39 +5,40 @@
         <title>Image Segmentation</title>
     </head>
     <body>
-        <h2 class="title">Image Segmentation</h2>
-        <form class="form-wrapper" method="POST" enctype="multipart/form-data">
-            <div class="slider-wrapper">
-                <label class="slider-label" for="k"> Number of Segments: </label>
-                <input type="range" id="k" name="k" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value">
-                <output class="slider-output-text">2</output>
+        <div class="image-segmentation-wrapper">
+            <h2 class="title">Image Segmentation</h2>
+            <form class="form-wrapper" method="POST" enctype="multipart/form-data">
+                <div class="slider-wrapper">
+                    <label class="slider-label" for="k"> Number of Segments: </label>
+                    <input type="range" id="k" name="k" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value">
+                    <output class="slider-output-text">2</output>
+                </div>
+
+                <div class="upload-file-wrapper">
+                    <input type="file" name="image" accept="image/*" required>
+                    <button type="submit"> Upload </button>
+                </div>
+            </form>
+
+            <div class="output-wrapper">
+
+                <div class="uploaded-image-wrapper">
+                    {% if filename %}
+                        <h3 class="output-header"> Uploaded Image </h3>
+                        <img class="output-image" src="{{ url_for('static', filename='uploads/' + filename) }}">
+                    {% endif %}
+                </div>
+
+                <div class="segmented-image-wrapper">
+                    {%if segmented %}
+                        <h3 class="output-header"> Segmented Image </h3>
+                        <img class="output-image" src="{{ url_for('static', filename='processed/' + filename) }}">
+                    {% endif %}
+                </div>
             </div>
-
-            <div class="upload-file-wrapper">
-                <input type="file" name="image" accept="image/*" required>
-                <button type="submit">Upload</button>
-            </div>
-        </form>
-
-        <div class="output-wrapper">
-
-            <div class="uploaded-image-wrapper">
-                {% if filename %}
-                    <h3>Uploaded Image:</h3>
-                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="300">
-                {% endif %}
-            </div>
-
-            <div class="segmented-image-wrapper">
-                {%if segmented %}
-                    <h3>Segmented Image:</h3>
-                    <img src="{{ url_for('static', filename='processed/' + filename) }}" width="300">
-                {% endif %}
-            </div>
-
             <div class="error-wrapper">
                 {% if error %}
-                    <p class="error-text">{{ error }}</p>
+                    <div class="error-text"> {{ error }} </div>
                 {% endif %}
             </div>
         </div>
