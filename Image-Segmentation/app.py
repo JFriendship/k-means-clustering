@@ -30,7 +30,6 @@ def upload_image():
 
             seg_filepath = os.path.join(app.config['PROCESS_FOLDER'], filename)
             k = request.form.get('k')
-            print("Obtained value k: ", k)
             segmented = segment_image(file_name=filename, k=int(k))
         else:
             error = 'File type not allowed. Please upload a .jpg, .jpeg, or .png file.'
